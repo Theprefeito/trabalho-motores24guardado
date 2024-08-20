@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class Player : MonoBehaviour
         float v = Input.GetAxis("Vertical"); // -1 pra trás, 0 nada, 1 pra frente
 
         Vector3 direcao = new Vector3(h, 0, v );
-        rb.AddForce(direcao * velocidade * Time.deltaTime);
+        rb.AddForce(direcao * velocidade * Time.deltaTime,ForceMode.Impulse);
+
+        if(transform.position.y <= - 15)
+        {
+            //jogador caiu
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
