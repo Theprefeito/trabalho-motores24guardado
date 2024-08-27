@@ -71,5 +71,12 @@ void OnCollisionEnter(Collision collision)
             //jogador caiu
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+         else if(Input.GetKeyDown(KeyCode.R))
+        {
+            //jogador caiu
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 }
