@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
     public int velocidade = 20;
     public int forcaPulo = 7;
     public bool onFloor;
-    
-    
+    public bool onSpecialFloor;
     
     private Rigidbody rb; 
     private AudioSource source;
@@ -32,6 +31,7 @@ void OnCollisionEnter(Collision collision)
     {
         onFloor = true;
     }
+    
 }
 
 
@@ -76,6 +76,11 @@ void OnCollisionEnter(Collision collision)
         {
             //jogador caiu
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        else if(!onFloor && collision.gameObject.tag == "SpecialFloor")
+        {
+             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
 
     }

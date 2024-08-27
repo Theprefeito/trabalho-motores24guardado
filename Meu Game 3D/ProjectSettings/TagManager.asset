@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Floor
   - Moeda
+  - Inv wall
+  - Out of bonds
+  - SpecialFloor
   layers:
   - Default
   - TransparentFX
