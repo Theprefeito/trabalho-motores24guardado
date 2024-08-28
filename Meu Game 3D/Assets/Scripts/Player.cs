@@ -78,10 +78,10 @@ void OnCollisionEnter(Collision collision)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        else if(!onFloor && collision.gameObject.tag == "SpecialFloor")
+       /* else if(!onFloor && collision.gameObject.tag == "SpecialFloor")
         {
              SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
-
+*/
     }
 }
