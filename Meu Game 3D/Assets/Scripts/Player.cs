@@ -33,7 +33,7 @@ void OnCollisionEnter(Collision collision)
            onFloor = true;   
         }
 
-   else if(!onFloor && collision.gameObject.tag == "SpecialFloor")
+   else if(!onSpecialFloor && collision.gameObject.tag == "SpecialFloor")
         {
            onSpecialFloor = true;   
         }
@@ -61,9 +61,15 @@ void OnCollisionEnter(Collision collision)
         {
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             onFloor = false;
+           
         }
        
-
+          if(onSpecialFloor == true)
+        {
+            rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
+            onSpecialFloor = false;
+           
+        }
 
 
 
@@ -76,16 +82,18 @@ void OnCollisionEnter(Collision collision)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+        else if(transform.position.y >= 200)
+        {
+             SceneManager.LoadScene(2);
+        }
+
          else if(Input.GetKeyDown(KeyCode.R))
         {
-            //jogador caiu
+            //jogador apertou R
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        else if(onSpecialFloor == true)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
-        }
+        
        
     
     }
