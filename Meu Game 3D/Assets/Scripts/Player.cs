@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,11 +28,17 @@ public class Player : MonoBehaviour
 
 void OnCollisionEnter(Collision collision)
 {
-    if(!onFloor && collision.gameObject.tag == "Floor")
-    {
-        onFloor = true;
-    }
-    
+   if(!onFloor && collision.gameObject.tag == "Floor")
+        {
+           onFloor = true;   
+        }
+
+   else if(!onFloor && collision.gameObject.tag == "SpecialFloor")
+        {
+           onSpecialFloor = true;   
+        }
+
+
 }
 
 
@@ -50,15 +57,12 @@ void OnCollisionEnter(Collision collision)
         
         
         //pulo
-        
-        Vector3 jumpForce = new Vector3(0, 1, 0);
         if(Input.GetKeyDown(KeyCode.Space) && onFloor)
         {
-           source.Play();
-           
-           rb.AddForce(jumpForce * forcaPulo, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             onFloor = false;
         }
+       
 
 
 
@@ -78,10 +82,11 @@ void OnCollisionEnter(Collision collision)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-       /* else if(!onFloor && collision.gameObject.tag == "SpecialFloor")
+        else if(onSpecialFloor == true)
         {
-             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
-*/
+       
+    
     }
 }
