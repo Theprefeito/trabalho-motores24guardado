@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public int forcaPulo = 7;
     public bool onFloor;
     public bool onSpecialFloor;
-    
+    public AudioClip JumpSound;
     private Rigidbody rb; 
     private AudioSource source;
 
@@ -61,14 +61,13 @@ void OnCollisionEnter(Collision collision)
         {
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             onFloor = false;
-           
+           //source.PlayOneShot(JumpSound);
         }
        
           if(onSpecialFloor == true)
         {
             rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
             onSpecialFloor = false;
-           
         }
 
 

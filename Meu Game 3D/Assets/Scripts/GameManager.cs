@@ -20,13 +20,13 @@ public class GameManager : MonoBehaviour
         TryGetComponent(out source);
         restantes = FindObjectsOfType<Moeda>().Length;
 
-        hud.text = $"Moedas Restantes: {restantes}";
+        hud.text = $"Ossos Restantes: {restantes}";
     }
 
     public void SubtrairMoedas(int valor)
     {
         restantes -= valor;
-        hud.text = $"Moedas Restantes: {restantes}";
+        hud.text = $"Ossos Restantes: {restantes}";
         source.PlayOneShot(clipMoeda);
 
         if (restantes <= 0)
