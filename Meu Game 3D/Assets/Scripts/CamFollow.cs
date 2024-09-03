@@ -21,5 +21,10 @@ public class CamFollow : MonoBehaviour
         Vector3 posfinal = alvo.position - offset;
         transform.position = Vector3.Lerp(transform.position,posfinal,suavidade * Time.deltaTime);
 
+        if(gameObject.name == "cachorro")
+        {
+            
+        }
+
     }
 }

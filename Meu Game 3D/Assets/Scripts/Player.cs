@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb; 
     private AudioSource source;
 
+    public Transform checkpoint;
 
 
     // Start is called before the first frame update
@@ -92,7 +93,11 @@ void OnCollisionEnter(Collision collision)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            //jogador apertou R
+           transform.position = checkpoint.position;
+        }
        
     
     }
