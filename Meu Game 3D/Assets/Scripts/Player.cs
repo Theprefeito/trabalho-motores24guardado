@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int forcaPulo = 7;
     public bool onFloor;
     public bool onSpecialFloor;
+    public bool onJumpFloor;
     public AudioClip JumpSound;
     private Rigidbody rb; 
     private AudioSource source;
@@ -39,6 +40,10 @@ void OnCollisionEnter(Collision collision)
            onSpecialFloor = true;   
         }
 
+   else if(!onJumpFloor && collision.gameObject.tag == "JumpFloor")
+        {
+           onJumpFloor = true;   
+        }
 
 }
 
@@ -67,10 +72,15 @@ void OnCollisionEnter(Collision collision)
        
           if(onSpecialFloor == true)
         {
-            rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * 300, ForceMode.Impulse);
             onSpecialFloor = false;
         }
 
+          if(onJumpFloor == true)
+        {
+            rb.AddForce(Vector3.up * 50, ForceMode.Impulse);
+            onJumpFloor = false;
+        }
 
 
 
@@ -82,7 +92,7 @@ void OnCollisionEnter(Collision collision)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        else if(transform.position.y >= 200)
+        else if(transform.position.y >= 350)
         {
              SceneManager.LoadScene(2);
         }
@@ -95,7 +105,7 @@ void OnCollisionEnter(Collision collision)
 
         if(Input.GetKeyDown(KeyCode.P))
         {
-            //jogador apertou R
+            //jogador apertou P
            transform.position = checkpoint.position;
         }
        

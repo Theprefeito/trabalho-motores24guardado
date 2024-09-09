@@ -9,6 +9,7 @@ TagManager:
   - Inv wall
   - Out of bonds
   - SpecialFloor
+  - JumpFloor
   layers:
   - Default
   - TransparentFX
