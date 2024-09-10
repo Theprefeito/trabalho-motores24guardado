@@ -67,7 +67,7 @@ void OnCollisionEnter(Collision collision)
         {
             rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
             onFloor = false;
-           //source.PlayOneShot(JumpSound);
+           source.PlayOneShot(JumpSound);
         }
        
           if(onSpecialFloor == true)
